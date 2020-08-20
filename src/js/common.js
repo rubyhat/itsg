@@ -30,16 +30,12 @@ const smoothScroll = (target, duration) => {
   requestAnimationFrame(animation);
 }
 
-let btn1 = document.querySelector('.btn1');
-let btn2 = document.querySelector('.btn2');
+let hero__btn = document.querySelector('.hero__btn');
 
-btn1.addEventListener('click', () => {
-  smoothScroll('.btn2', 2350);
+hero__btn.addEventListener('click', () => {
+  smoothScroll('.about__link', 2350);
 });
 
-btn2.addEventListener('click', () => {
-  smoothScroll('.btn1', 2350);
-});
 
 // Scroll with jQuery
 // $(document).ready(function () {
