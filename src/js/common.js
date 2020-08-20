@@ -37,6 +37,31 @@ hero__btn.addEventListener('click', () => {
 });
 
 
+//swiper slider
+
+const slider = document.querySelector('.swiper-container')
+
+let mySwiper = new Swiper(slider, {
+ slidesPerView: 1,
+ spaceBetween: 50,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  // Disable preloading of all images
+  preloadImages: false,
+  // Enable lazy loading
+  lazy: true,
+  autoplay: {
+    delay: 3000,
+  },
+  breakpoints: {
+    900: {
+      slidesPerView: 3,
+    }
+  }
+})
+
 // Scroll with jQuery
 // $(document).ready(function () {
 //   $('.scroll-anch').click(function () {
