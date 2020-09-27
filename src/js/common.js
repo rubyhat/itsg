@@ -7,7 +7,8 @@ const smoothScroll = (target, duration) => {
   let distance = targetPosition - startPosition;
   let startTime = null;
 
-  // console.log('target position = ' + targetPosition);
+  console.log('start position = ' + startPosition);
+  console.log('target position = ' + targetPosition);
 
   const animation = currentTime => {
     if (startTime === null) startTime = currentTime;
@@ -30,12 +31,16 @@ const smoothScroll = (target, duration) => {
   requestAnimationFrame(animation);
 }
 
-let hero__btn = document.querySelector('.hero__btn');
+let heroBtn = document.querySelector('.hero__btn');
+let heroToServices = document.querySelector('.hero-services-link');
 
-hero__btn.addEventListener('click', () => {
-  smoothScroll('.about__link', 2350);
+heroBtn.addEventListener('click', () => {
+  smoothScroll('.about', 2350);
 });
 
+heroToServices.addEventListener('click', () => {
+  smoothScroll('.services', 2350);
+});
 
 //swiper slider
 
@@ -51,7 +56,7 @@ let mySwiper = new Swiper(slider, {
   // Disable preloading of all images
   preloadImages: false,
   // Enable lazy loading
-  lazy: true,
+  // lazy: true,
   autoplay: {
     delay: 3000,
   },

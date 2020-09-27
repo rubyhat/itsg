@@ -16,13 +16,8 @@
 	.container
 		padding: 0 20px
 
-.hero, .about, .comparison, .clients
+.hero, .about, .comparison, .clients, .services, .feedback, .service-page, .location, .bonus
 	padding-bottom: 80px
-
-@media screen and (max-width: 768px)
-	.one
-		background-color: tomato
-
 
 // Hero page
 
@@ -153,7 +148,7 @@
 		width: 100%
 		text-align: center
 
-.hero__links
+.links
 	display: flex
 	flex-direction: column
 	width: 100%
@@ -165,14 +160,14 @@
 			margin-bottom: 0
 
 @media screen and (max-width: 900px)
-	.hero__links
+	.links
 		max-width: 360px
 
 @media screen and (max-width: 340px)
-	.hero__links
+	.links
 		min-width: 100%
 
-.hero__card
+.links__card
 	display: flex
 	align-items: center
 	justify-content: space-between
@@ -188,10 +183,10 @@
 		color: $accent
 
 @media screen and (max-width: 340px)
-	.hero__card
+	.links__card
 		font-size: 13px
 
-.hero__card_wrapper
+.links__card_wrapper
 	display: flex
 	align-items: center
 	img
@@ -226,19 +221,97 @@
 		&__first, &__second
 			display: none
 
-// About
+// Advantages
+.advantages__stat
+	display: flex
+	justify-content: space-between
+	padding: 40px 0
 
-.about__text
+.advantages__item
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+
+.advantages__num
+	font-family: 'Russo One', sans-serif
+	color: $accent
+	font-size: 45px
+
+.advantages__text
+	font-size: 16px
+	font-weight: 600
+	color: $font-color
+
+.advantages__map
+	display: flex
+	justify-content: center
+	img
+		width: 100%
+		height: 100%
+
+// Bonus
+.bonus-cards
+	padding-top: 40px
+
+.bonus-cards__row
+	display: flex
+	justify-content: space-between
+	flex-wrap: wrap
+	&:last-child
+		margin-bottom: 0
+
+.bonus__text
+	padding-top: 16px
+
+.bonus-cards__item
+	padding: 32px 24px
+	margin-right: 24px
+	margin-bottom: 32px
+	border: 1px solid $border-color
+	border-radius: 6px
+	max-width: 380px
+	min-width: 380px
+	transition: all 300ms
+	&:hover
+		box-shadow: 0px 0px 20px rgba(16, 16, 16, 0.25)
+		.bonus-cards__title
+			color: $accent
+	&:last-child
+		margin-right: 0
+
+@media screen and (max-width: 960px)
+	.bonus-cards__row
+		flex-direction: column
+		align-items: center
+	.bonus-cards__item
+		margin-right: 0
+
+.bonus-cards__title
+	margin-bottom: 12px
+	text-transform: none
+	font-size: 23px
+	letter-spacing: 0.02em
+
+@media screen and (max-width: 440px)
+	.bonus-cards__item
+		max-width: 100%
+		min-width: 280px
+
+	.bonus-cards__title
+		font-size: 19px
+
+// About
+.about__text, .location__text
 	margin: 16px 0
 
 .about__link
 	display: flex
 	align-items: center
 	transition: all 300ms
-	&:hover
-		color: $accent
 	img
 		margin-left: 10px
+		transform: rotate(90deg)
 
 // Comparison
 .comparison__row
@@ -344,21 +417,6 @@
 .clients__title
 	margin-bottom: 24px
 
-.swiper, .swiper__body
-	display: flex
-	align-items: center
-	display: none
-
-.swiper__left
-	margin-right: 32px
-	img
-		transform: scaleX(-1)
-
-.swiper__item
-	margin-right: 32px
-	img
-		max-width: 240px
-
 .slider-container
 	position: relative
 
@@ -368,9 +426,12 @@
 .swiper-lazy-preloader
 	padding-top: 40px
 	border-color: $accent
-
+	
 .swiper-slide
-	text-align: center
+	display: flex
+	align-items: center
+	justify-content: center
+	min-height: 90px
 	img
 		max-width: 100%
 
@@ -395,3 +456,324 @@
 	&::after
 		// content: url('../img/icons/arrow.jpg')
 		color: $accent
+
+// Services
+
+.services__row
+	display: grid
+	grid-template-columns: repeat(4, 1fr)
+	grid-gap: 20px
+	padding: 0 20px
+	
+.services__item, .service-page-img
+	display: grid
+	min-height: 32vh
+	background-size: cover
+	background-position: center
+	align-content: center
+	text-align: center
+	color: #fff
+	transition: all 300ms
+	position: relative
+	z-index: 10
+	span
+		font-size: 24px
+		font-weight: 700
+		text-transform: uppercase
+		z-index: 10
+	&::before
+		content: ''
+		position: absolute
+		z-index: -1
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background-color: #212121
+		opacity: .60
+		transition: all 300ms
+	&:hover
+		color: #ffffff
+		&::before
+			background-color: $accent
+			opacity: .60
+
+.services__item:nth-child(1)
+	grid-column: 1 / 3
+
+.services__item:nth-child(5)
+	grid-column: 2 / 4	
+
+.services__item:nth-child(6)
+	grid-column: 4
+	grid-row: 2 / 4
+
+@media screen and (max-width: 992px)
+	.services__row
+		grid-template-columns: repeat(3, 1fr)
+	.services__item
+		min-height: 40vh
+	.services__item:nth-child(5)
+		grid-column: 1 / 3
+	.services__item:nth-child(6)
+		grid-column: 3
+		grid-row: 2 / 4
+
+@media screen and (max-width: 768px)
+	.services__row
+		grid-template-columns: repeat(1, 1fr)
+	.services__item
+		min-height: 32vh
+		span
+			padding: 0 10px
+	.services__item:nth-child(5)
+		grid-column: initial
+	.services__item:nth-child(6)
+		grid-column: initial
+		grid-row: initial
+
+@media screen and (max-width: 760px)
+		.services__item:nth-child(1)
+			grid-column: initial
+	
+// Feedback
+
+.feedback__row
+	display: flex
+	justify-content: space-between
+	padding: 32px 24px
+	border: 1px solid $border-color
+	border-radius: 6px
+
+@media screen and (max-width: 760px)
+	.feedback__row
+		flex-direction: column
+		justify-content: center
+	.feedback__title
+		width: 100%
+		display: flex
+
+.feedback__map
+	display: flex
+	align-items: center
+	flex-direction: column
+	margin-right: 20px
+	img
+		width: 100%
+		max-width: 400px
+	
+@media screen and (max-width: 760px)
+	.feedback__map
+		img
+			max-width: 100%
+
+.feedback__img
+	padding: 10px
+	border: 1px solid $border-color
+	border-radius: 6px
+	background-color: #f6f6f6
+
+.feedback__map-link
+	width: 100%
+	padding: 18px
+	background-color: #30AD00
+	border: 1px solid #30AD00
+	border-radius: 6px
+	margin-top: 16px
+	margin-bottom: 8px
+	color: #ffffff
+	text-align: center
+	transition: all 500ms
+	&:hover
+		background-color: #fff
+		color: #30AD00
+
+@media screen and (max-width: 760px)
+	.feedback__map-link
+		margin-bottom: 16px
+	
+
+.feedback__success
+	width: 100%
+	padding: 12px
+	background-color: #d4edda
+	border: 1px solid #c3e6cb
+	border-radius: 6px
+	text-align: center
+	color: #155724
+	display: none
+
+@media screen and (max-width: 760px)
+	.feedback__success
+		margin-bottom: 16px
+
+.feedback__form
+	width: 100%
+	max-width: 295px
+	min-width: 280px
+
+@media screen and (max-width: 760px)
+	.feedback__form
+		max-width: 100%
+		display: flex
+		flex-direction: column
+
+.feedback__title
+	margin-bottom: 24px
+
+.feedback__text-field
+	// width: 100%
+	padding: 9px 18px
+	font-size: 16px
+	line-height: 18px
+	color: $font-color
+	border: none
+	border-bottom: 2px solid $font-color
+	margin-bottom: 24px
+	transition: all 300ms
+	&:focus
+		outline: none
+		border-bottom: 2px solid $accent
+
+.feedback__btn
+	font-size: 16px
+	line-height: 18px
+	padding: 18px
+	width: 100%
+	text-align: center
+	background-color: $accent
+	border: none
+	border-radius: 6px
+	color: #ffffff
+	cursor: pointer
+	margin-bottom: 12px
+	transition: all 300ms
+	&:hover
+		box-shadow: 0 0 20px rgba(91, 91, 91, .25)
+
+.feedback__policy
+	display: flex
+	align-items: center
+	justify-content: center
+	img
+		max-width: 12px
+		margin-right: 6px
+
+.feedback__text
+	font-size: 13px
+
+
+// Services page
+
+.service-page-img
+	min-height: 40vh
+	margin-bottom: 32px
+	span
+		font-size: 45px
+	&:hover
+		&::before
+			opacity: .8
+			background-color: #212121
+
+@media screen and (max-width: 480px)
+	.service-page-img
+		span
+			font-size: 32px
+
+.service-page__text
+	margin-bottom: 24px
+	font-size: 20px
+
+.service-page
+	.links
+		flex-direction: row
+		max-width: 100%
+		min-width: 200px
+		li
+			width: 100%
+			margin-right: 24px
+			margin-bottom: 0
+			&:last-child
+				margin-right: 0
+
+@media screen and (max-width: 760px)
+	.service-page
+		.links
+			flex-wrap: wrap
+			li
+				margin-right: 0
+				margin-bottom: 24px
+				&:last-child
+					margin-bottom: 0
+
+.footer
+	padding: 32px 20px
+	background-color: $font-color
+	color: #ffffff
+	
+.footer__row
+	display: flex
+	flex-direction: column
+	align-items: center
+
+.footer__links
+	width: 100%
+	display: flex
+	justify-content: center
+	li
+		margin-right: 4%
+		&:last-child
+			margin-right: 0
+
+.footer__link
+	color: #ffffff
+	transition: all 300ms
+	&:hover
+		color: $accent
+		text-decoration: underline
+
+.footer__teamviewer
+	display: flex
+	align-items: center
+	color: #ffffff
+	margin: 24px 0
+	transition: all 300ms
+	img
+		margin-right: 6px
+	&:hover
+		color: #0D8AE6
+		text-decoration: underline
+
+.mobile-links
+	display: none
+
+@media screen and (max-width: 480px)
+	.mobile-links
+		display: block
+		padding: 24px
+		display: flex
+		justify-content: space-between
+		width: 100%
+		position: fixed
+		bottom: 0
+		z-index: 100
+
+	.mobile-link
+		font-size: 14px
+		font-weight: 600
+		line-height: 16px
+		color: #ffffff
+		padding: 16px 32px
+		border-radius: 1px solid rgba(0,0,0, .0)
+		border-radius: 6px
+		width: 100%
+		text-align: center
+		box-shadow: 0 0 12px rgba(91, 91, 91, .25)
+
+	.mobile-link_msg
+		background-color: #2980DD
+		margin-right: 24px
+
+	.mobile-link_call
+		background-color: #63BD37
+
