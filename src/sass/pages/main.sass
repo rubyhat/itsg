@@ -30,10 +30,11 @@
 
 .header__menu
 	display: flex
-	align-items: center
+	flex-direction: column
 	li
 		max-height: 39px
 		margin-right: 24px
+		margin-bottom: 8px
 		&:last-child
 			margin-right: 0
 		img
@@ -51,10 +52,13 @@
 			display: none
 			&:first-child
 				display: block
+		.header__subtitle
+			display: none
 
 .header__btns
 	display: flex
 	align-items: center
+	max-height: 43px
 	a
 		font-size: 13px
 		padding: 13px 26px
@@ -268,7 +272,7 @@
 	padding: 32px 24px
 	margin-right: 24px
 	margin-bottom: 32px
-	border: 1px solid $border-color
+	border: 1px solid $accent
 	border-radius: 6px
 	max-width: 380px
 	min-width: 380px
@@ -542,7 +546,7 @@
 	display: flex
 	justify-content: space-between
 	padding: 32px 24px
-	border: 1px solid $border-color
+	// border: 1px solid $border-color
 	border-radius: 6px
 
 @media screen and (max-width: 760px)
@@ -609,7 +613,7 @@
 
 .feedback__form
 	width: 100%
-	max-width: 295px
+	max-width: 305px
 	min-width: 280px
 
 @media screen and (max-width: 760px)
@@ -622,7 +626,7 @@
 	margin-bottom: 24px
 
 .feedback__text-field
-	// width: 100%
+	width: 100%
 	padding: 9px 18px
 	font-size: 16px
 	line-height: 18px
@@ -634,6 +638,9 @@
 	&:focus
 		outline: none
 		border-bottom: 2px solid $accent
+	&_error
+		border: 2px solid tomato
+		border-radius: 6px
 
 .feedback__btn
 	font-size: 16px
@@ -648,8 +655,28 @@
 	cursor: pointer
 	margin-bottom: 12px
 	transition: all 300ms
+	position: relative
+	outline: none
 	&:hover
 		box-shadow: 0 0 20px rgba(91, 91, 91, .25)
+	&::after
+		content: 'Отправлено!'
+		font-weight: 700
+		position: absolute
+		top: 0
+		left: 0
+		background-color: #30AD00
+		width: 100%
+		height: 100%
+		border-radius: 6px
+		display: flex
+		align-items: center
+		justify-content: center
+		opacity: 0
+	&_success
+		&::after
+			opacity: 1
+
 
 .feedback__policy
 	display: flex
